@@ -2,7 +2,7 @@ name: MNRE LinkedIn AI Agent
 
 on:
   schedule:
-    - cron: "30 3 * * *"   # Runs daily at 9:00 AM IST
+    - cron: "30 3 * * *"   # 9:00 AM IST daily
   workflow_dispatch:
 
 jobs:
@@ -22,11 +22,10 @@ jobs:
         run: |
           pip install requests beautifulsoup4 google-generativeai
 
-      - name: Run MNRE LinkedIn Agent
+      - name: Run MNRE LinkedIn AI Agent
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           python fetch_mnre.py
           python detect_new.py
           python write_post.py
-
