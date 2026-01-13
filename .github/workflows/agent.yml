@@ -1,1 +1,32 @@
+name: MNRE LinkedIn AI Agent
+
+on:
+  schedule:
+    - cron: "30 3 * * *"   # Runs daily at 9:00 AM IST
+  workflow_dispatch:
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 google-generativeai
+
+      - name: Run MNRE LinkedIn Agent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python fetch_mnre.py
+          python detect_new.py
+          python write_post.py
 
