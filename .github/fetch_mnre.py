@@ -11,7 +11,6 @@ def fetch_latest_news():
 
     response = requests.get(MNRE_NEWS_URL, headers=headers, timeout=20)
 
-    # Do NOT crash on HTTP error
     if response.status_code != 200:
         print(f"MNRE site returned status {response.status_code}")
         return
@@ -31,7 +30,6 @@ def fetch_latest_news():
                 "url": full_url
             })
 
-    # Remove duplicates & keep latest 5
     unique = {item["url"]: item for item in news_items}
     latest_news = list(unique.values())[:5]
 
