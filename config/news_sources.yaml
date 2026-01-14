@@ -1,0 +1,24 @@
+sources:
+  - name: MNRE
+    type: rss
+    url: https://mnre.gov.in/feeds/latest_news.xml
+
+  - name: SECI
+    type: rss
+    url: https://www.seci.co.in/Upload/News/rss.xml
+
+  - name: Economic Times Energy
+    type: rss
+    url: https://economictimes.indiatimes.com/industry/energy/rssfeeds/2647163.cms
+
+  - name: Business Standard Energy
+    type: rss
+    url: https://www.business-standard.com/rss/industry/energy
+
+  - name: PV Magazine
+    type: rss
+    url: https://www.pv-magazine.com/feed/
+
+  - name: Hydrogen Insight
+    type: rss
+    url: https://www.hydrogeninsight.com/rss/
