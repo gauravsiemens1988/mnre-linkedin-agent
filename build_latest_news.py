@@ -1,0 +1,16 @@
+import json
+
+from fetch_mnre import fetch_mnre_news
+from fetch_seci import fetch_seci_news
+from fetch_google_news import fetch_google_green_news
+
+latest_news = []
+
+latest_news.extend(fetch_mnre_news())
+latest_news.extend(fetch_seci_news())
+latest_news.extend(fetch_google_green_news())
+
+with open("latest_news.json", "w", encoding="utf-8") as f:
+    json.dump(latest_news, f, indent=2, ensure_ascii=False)
+
+print(f"✅ latest_news.json updated with {len(latest_news)} items")
