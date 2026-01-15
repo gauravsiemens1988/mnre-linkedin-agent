@@ -1,5 +1,6 @@
 import json
 import os
+print("🚀 LinkedIn Agent run started")
 
 LATEST_FILE = "latest_news.json"
 MEMORY_FILE = "memory.json"
@@ -41,7 +42,8 @@ def detect_new_item():
             print(f"New {source} news detected.")
             return
 
-    print("No new news from any source.")
+    print("✅ Agent ran successfully. No new items found in this run.")
+
 
 if __name__ == "__main__":
     detect_new_item()
