@@ -14,3 +14,4 @@ with open("latest_news.json", "w", encoding="utf-8") as f:
     json.dump(latest_news, f, indent=2, ensure_ascii=False)
 
 print(f"✅ latest_news.json updated with {len(latest_news)} items")
+
