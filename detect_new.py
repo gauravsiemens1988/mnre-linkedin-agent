@@ -21,20 +21,28 @@ def detect_new_item():
         memory = json.load(f)
 
     for item in latest_news:
-        url = item["url"]
+        url = item.get("url")
+        source = item.get("source", "UNKNOWN")
+
+        if not url:
+            continue
+
         if url not in memory:
-            # New item found
             with open(NEW_ITEM_FILE, "w", encoding="utf-8") as f:
                 json.dump(item, f, indent=2, ensure_ascii=False)
 
-            memory[url] = True
-            with open(MEMORY_FILE, "w", encoding="utf-8") as f:
-                json.dump(memory, f, indent=2)
+            memory[url] = {
+                "source": source
+            }
 
-            print("New MNRE news detected.")
+            with open(MEMORY_FILE, "w", encoding="utf-8") as f:
+                json.dump(memory, f, indent=2, ensure_ascii=False)
+
+            print(f"New {source} news detected.")
             return
 
-    print("No new MNRE news.")
+    print("No new news from any source.")
 
 if __name__ == "__main__":
     detect_new_item()
+
